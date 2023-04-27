@@ -1,17 +1,19 @@
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.wait import WebDriverWait
+
 from locators.admin_login_page import AdminLoginPage
-from locators.home_page import HomePage
 from locators.common_header import CommonHeader
+from locators.home_page import HomePage
+from locators.new_user_page import NewUserPage
 from locators.product_category import ProductCategoryPage
 from locators.product_page import ProductPage
-from locators.new_user_page import NewUserPage
 
 
 def test_admin_login_page(browser, url):
     browser.get(url=url+'admin/')
-    WebDriverWait(browser, 5).until(EC.element_to_be_clickable(AdminLoginPage.SUBMIT_BUTTON))
+    WebDriverWait(browser, 5).until(EC.element_to_be_clickable
+                                    (AdminLoginPage.SUBMIT_BUTTON))
     browser.find_element(*AdminLoginPage.USERNAME_INPUT)
     browser.find_element(*AdminLoginPage.PASSWORD_INPUT)
     browser.find_element(*AdminLoginPage.SUBMIT_BUTTON)
@@ -60,11 +62,14 @@ def test_product_category_page(browser, url):
     dropdowns = browser.find_elements(*ProductCategoryPage.DROPDOWNS)
     for dropdown in dropdowns:
         ActionChains(browser).move_to_element(dropdown).perform()
-        WebDriverWait(browser, 3).until(EC.presence_of_element_located(ProductCategoryPage.DROPDOWN_MENU))
-        list_items = browser.find_elements(*ProductCategoryPage.DROPDOWN_INNER_LIST)
+        WebDriverWait(browser, 3).until(EC.presence_of_element_located
+                                        (ProductCategoryPage.DROPDOWN_MENU))
+        list_items = browser.find_elements(
+            *ProductCategoryPage.DROPDOWN_INNER_LIST)
         for item in list_items:
             item.get_attribute('href')
-        browser.find_element(*ProductCategoryPage.SEE_ALL_LINK).get_attribute('href')
+        browser.find_element(
+            *ProductCategoryPage.SEE_ALL_LINK).get_attribute('href')
 
 
 def test_product_page(browser, url):
@@ -80,20 +85,3 @@ def test_product_page(browser, url):
     browser.find_element(*ProductPage.INPUT_SORT)
     browser.find_element(*ProductPage.INPUT_LIMIT)
     browser.find_element(*ProductPage.PRODUCT_COMPARE_BTN).click()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
