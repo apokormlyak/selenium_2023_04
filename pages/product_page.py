@@ -1,8 +1,8 @@
+from base_page import BasePage
 from selenium.webdriver.common.by import By
-from conftest import url
 
 
-class ProductPage:
+class ProductPage(BasePage):
     CONTENT = (By.ID, 'content')
     BUTTON_LIST_VIEW = (By.ID, 'list-view')
     BUTTON_GRID_VIEW = (By.ID, 'grid-view')
