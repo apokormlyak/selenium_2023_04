@@ -1,3 +1,5 @@
+import random
+
 USERNAME = 'bn_opencart'
 PASSWORD = 'test'
 ADMIN_USERNAME = 'user'
@@ -20,8 +22,7 @@ users = [
 
 
 def get_new_user():
-    product = [users[i] for i in range(len(users))]
-    return product
+    return random.choice(users)
 
 
 def get_username(user=None):

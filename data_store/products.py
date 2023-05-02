@@ -1,3 +1,4 @@
+import random
 
 products = [
     {'name': 'name1', 'meta': 'meta1', 'model': 'model1'},
@@ -14,5 +15,4 @@ products = [
 
 
 def get_product():
-    product = [products[i] for i in range(len(products))]
-    return product
+    return random.choice(products)
