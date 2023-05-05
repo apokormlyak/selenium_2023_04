@@ -1,7 +1,8 @@
+from base_page import BasePage
 from selenium.webdriver.common.by import By
 
 
-class CommonHeader:
+class CommonHeader(BasePage):
     LOGO = (By.CSS_SELECTOR, "#logo")
     SEARCH_INPUT = (By.NAME, "search")
     SEARCH_BUTTON = (By.CSS_SELECTOR, "button[type='button']")
