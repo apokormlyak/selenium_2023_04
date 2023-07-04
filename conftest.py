@@ -45,7 +45,7 @@ def browser(request):
             driver = webdriver.Remote(webdriver_service.service_url, capabilities)
 
     else:
-        executor_url = f"http://127.0.0.1:4444/wd/hub"
+        executor_url = f"http://{executor}:4444/wd/hub"
         chrome_options = webdriver.ChromeOptions()
         chrome_options.set_capability("browserVersion", version)
         chrome_options.set_capability("screenResolution", "1280x1024")
