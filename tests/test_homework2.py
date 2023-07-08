@@ -4,14 +4,17 @@ from pages.admin_page import Admin
 from pages.currency_box import CurrencyBox
 from pages.registration_page import NewUser
 from pages.user_login_page import UserLoginPage
+import allure
 
 
+@allure.title("Тест: авторизация пользователя")
 def test_user_login_page(browser, url):
     browser.get(url=url+'index.php?route=account/login')
     UserLoginPage(browser).login(username=users.get_username(),
                                  password=users.get_password())
 
 
+@allure.title("Тест: добавление товара")
 def test_add_new_product(browser, url):
     browser.get(url=url+'admin')
     Admin(browser).login(username=users.get_username('admin'),
@@ -24,6 +27,7 @@ def test_add_new_product(browser, url):
     NewProduct(browser).save_new_product()
 
 
+@allure.title("Тест: удаление товара")
 def test_delete_product(browser, url):
     browser.get(url=url+'admin')
     Admin(browser).login(username=users.get_username('admin'),
@@ -32,6 +36,7 @@ def test_delete_product(browser, url):
     Admin(browser).delete_product()
 
 
+@allure.title("Тест: регистрация нового пользователя")
 def test_register_new_user(browser, url):
     browser.get(url=url+'index.php?route=account/register')
     user = users.get_new_user()
@@ -43,6 +48,7 @@ def test_register_new_user(browser, url):
     NewUser(browser).submit()
 
 
+@allure.title("Тест: выбор валюты")
 def test_change_currency(browser, url):
     browser.get(url=url)
     CurrencyBox(browser).open_currency_box()
